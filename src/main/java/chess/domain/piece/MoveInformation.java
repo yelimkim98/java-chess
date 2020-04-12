@@ -27,14 +27,21 @@ public class MoveInformation {
     }
 
     public boolean isEndAdjacentToStart() {
-        return to.equals(from.increase(0, 1))    // North
-            || to.equals(from.increase(1, 1))    // NorthEast
-            || to.equals(from.increase(1, 0))    // East
-            || to.equals(from.increase(1, -1))   // SouthEast
-            || to.equals(from.increase(0, -1))    // South
-            || to.equals(from.increase(-1, -1))   // SouthWest
-            || to.equals(from.increase(-1, 0))    // West
-            || to.equals(from.increase(-1, 1));   // NorthWest
+        return isEndEqualsIncreaseOfStart(0, 1)    // North
+            || isEndEqualsIncreaseOfStart(1, 1)    // NorthEast
+            || isEndEqualsIncreaseOfStart(1, 0)    // East
+            || isEndEqualsIncreaseOfStart(1, -1)   // SouthEast
+            || isEndEqualsIncreaseOfStart(0, -1)    // South
+            || isEndEqualsIncreaseOfStart(-1, -1)   // SouthWest
+            || isEndEqualsIncreaseOfStart(-1, 0)    // West
+            || isEndEqualsIncreaseOfStart(-1, 1);   // NorthWest
+    }
+
+    private boolean isEndEqualsIncreaseOfStart(int x, int y) {
+        if (from.canIncrease(x, y)) {
+            return to.equals(from.increase(x, y));
+        }
+        return false;
     }
 
     public boolean isEndOnDiagonalOfStart() {

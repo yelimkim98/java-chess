@@ -63,7 +63,8 @@ public class Position {
     public Position increase(int x, int y) {
         if (!canIncrease(x, y)) {
             throw new IllegalArgumentException(
-                "현재 위치에서 x 를" + x + "만큼, y를" + y + "만큼 증가할 수 없습니다."
+                "현재 위치(" + this.file + this.rank + "에서 "
+                    + "x 를" + x + "만큼, y를" + y + "만큼 증가할 수 없습니다."
             );
         }
         return Position.of(this.file.increase(x), this.rank.increase(y));

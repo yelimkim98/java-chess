@@ -1,3 +1,30 @@
+history.pushState(null, null, location.href);
+
+window.onpopstate = function(event) {
+  history.go(1);
+};
+
+function unload() {
+  if (self.screenTop > 9000) {
+    // 브라우저 닫힘
+  } else {
+    if (document.readyState === "complete") {
+      // 새로고침
+      reloadChessBoard();
+    }
+  }
+}
+
+function reloadChessBoard() {
+  let form = document.createElement('form');
+  form.setAttribute('method', 'get');
+  form.setAttribute('action', '/');
+  document.charset = "utf-8";
+
+  document.body.appendChild(form);
+  form.submit();
+}
+
 window.onload = function() {
   let squares = document.getElementsByClassName('square');
 
