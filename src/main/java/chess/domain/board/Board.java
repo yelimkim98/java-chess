@@ -24,6 +24,8 @@ public class Board {
     }
 
     private void move(Team current, Position from, Position to) {
+        validateIsAnyPieceOnFromPosition(from);
+
         Piece piece = board.get(from);
         validateBelongsCurrentTeam(current, piece);
 
@@ -32,6 +34,12 @@ public class Board {
         }
         board.remove(from);
         board.put(to, piece);
+    }
+
+    private void validateIsAnyPieceOnFromPosition(Position from) {
+        if (!board.containsKey(from)) {
+            throw new IllegalArgumentException("from position 에 기물이 없습니다.");
+        }
     }
 
     private void validateBelongsCurrentTeam(Team current, Piece piece) {

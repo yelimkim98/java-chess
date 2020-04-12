@@ -12,16 +12,16 @@ function setSquareOnClick(square) {
     let toPositionInput = document.getElementById('to-position');
 
     if (isEmpty(fromPositionInput)) {
-      setFromPositionWith(square.id + "");
+      setFromPositionWith(square.id);
       return;
     }
     if (!isEmpty(fromPositionInput) && !isEmpty(toPositionInput)) {
       resetFromToPositions();
-      setFromPositionWith(square.id + "");
+      setFromPositionWith(square.id);
       return;
     }
     if (!isEmpty(fromPositionInput) && isEmpty(toPositionInput)) {
-      setToPositionWith(square.id + "");
+      setToPositionWith(square.id);
     }
   }
 }
