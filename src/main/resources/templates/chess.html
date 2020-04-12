@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./css/chess.css"/>
   <title>Chess</title>
+  <link rel="stylesheet" href="./css/chess.css"/>
+  <script src="./js/chess.js"></script>
 </head>
 <body>
 <header>
@@ -223,8 +224,8 @@
   <div id="move">
     <form action="/" method="post">
       move
-      <input type="text" placeholder="from" name="from-position">
-      <input type="text" placeholder="to" name="to-position">
+      <input id="from-position" type="text" placeholder="from" name="from-position">
+      <input id="to-position"type="text" placeholder="to" name="to-position">
       <button type="submit">GO!</button>
     </form>
   </div>
