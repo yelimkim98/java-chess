@@ -34,8 +34,10 @@ public class WebUIController {
     public static void runWithoutException() {
         staticFiles.location("/static");
 
+        /* DB에 저장된 move 명령어 기록들을 처음부터 재실행 */
         get("/", (request, response) -> render(chessGameService.loadRecord()));
 
+        /* POST 로 들어오는건 무조건 move 명령어가 포함된걸로 가정 */
         post("/", WebUIController::moveAndRender);
 
         internalServerError(renderErrorPage());
