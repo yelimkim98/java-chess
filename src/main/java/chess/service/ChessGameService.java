@@ -12,13 +12,20 @@ import java.util.List;
 
 public class ChessGameService {
 
-    private GameStatus gameStatus = new NothingHappened().start();
-    private CommandLogDao commandLogDao = new CommandLogDao(new JDBCConnector());
+    private GameStatus gameStatus;
+    private CommandLogDao commandLogDao;
 
-    public ChessGameDTO loadRecord() throws SQLException {
+    public ChessGameService() {
+        initGameStatus();
+    }
+
+    private void initGameStatus() {
         gameStatus = new NothingHappened().start();
         commandLogDao = new CommandLogDao(new JDBCConnector());
+    }
 
+    public ChessGameDTO loadRecord() throws SQLException {
+        initGameStatus();
         executePastRequests();
 
         return new ChessGameDTO(
